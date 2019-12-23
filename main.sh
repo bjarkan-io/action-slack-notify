@@ -6,7 +6,6 @@ export SLACK_USERNAME=${SLACK_USERNAME:-"rtBot"}
 export CI_SCRIPT_OPTIONS="ci_script_options"
 export SLACK_TITLE=${SLACK_TITLE:-"Message"}
 export COMMIT_MESSAGE=$(cat "/github/workflow/event.json" | jq .commits | jq '.[0].message' -r)
-export GITHUB_SHORT_SHA=$(git rev-parse --short "$GITHUB_SHA")
 
 hosts_file="$GITHUB_WORKSPACE/.github/hosts.yml"
 

@@ -69,12 +69,12 @@ func main() {
 			Short: true,
 		}, {
 			Title: "Commit",
-			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit" + os.Getenv(EnvCommitSha),
+			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha),
 			Short: true,
 		},
 		{
 			Title: "Action link",
-			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit" + os.Getenv(EnvCommitSha) + "/checks",
+			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha) + "/checks",
 			Short: false,
 		},
 		{
