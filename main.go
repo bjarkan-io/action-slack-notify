@@ -20,7 +20,7 @@ const (
 	EnvSiteName      = "SITE_NAME"
 	EnvHostName      = "HOST_NAME"
 	EnvDeployPath    = "DEPLOY_PATH"
-	EnvCommitSha     = "GITHUB_SHORT_SHA"
+	EnvCommitSha     = "GITHUB_SHA"
 )
 
 type Webhook struct {
@@ -69,12 +69,12 @@ func main() {
 			Short: true,
 		}, {
 			Title: "Commit",
-			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha),
+			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha[0:7]),
 			Short: true,
 		},
 		{
 			Title: "Action link",
-			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv("GITHUB_SHA") + "/checks",
+			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha) + "/checks",
 			Short: false,
 		},
 		{
