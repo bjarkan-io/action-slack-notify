@@ -1,0 +1,5 @@
+name: "Notify Slack"
+description: "Sends a Slack webhook"
+runs:
+  using: "docker"
+  image: "Dockerfile"
