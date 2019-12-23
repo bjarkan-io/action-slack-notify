@@ -69,7 +69,7 @@ func main() {
 			Short: true,
 		}, {
 			Title: "Commit",
-			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha[0:7]),
+			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha)[0:7],
 			Short: true,
 		},
 		{
