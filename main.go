@@ -9,18 +9,18 @@ import (
 )
 
 const (
-	EnvSlackWebhook  = "SLACK_WEBHOOK"
-	EnvSlackIcon     = "SLACK_ICON"
-	EnvSlackChannel  = "SLACK_CHANNEL"
-	EnvSlackTitle    = "SLACK_TITLE"
-	EnvSlackMessage  = "SLACK_MESSAGE"
-	EnvSlackColor    = "SLACK_COLOR"
-	EnvSlackUserName = "SLACK_USERNAME"
-	EnvGithubActor   = "GITHUB_ACTOR"
-	EnvSiteName      = "SITE_NAME"
-	EnvHostName      = "HOST_NAME"
-	EnvDeployPath    = "DEPLOY_PATH"
-	EnvCommitSha     = "GITHUB_SHA"
+	EnvSlackWebhook   = "SLACK_WEBHOOK"
+	EnvSlackIcon      = "SLACK_ICON"
+	EnvSlackIconEmoji = "SLACK_ICON_EMOJI"
+	EnvSlackChannel   = "SLACK_CHANNEL"
+	EnvSlackTitle     = "SLACK_TITLE"
+	EnvSlackMessage   = "SLACK_MESSAGE"
+	EnvSlackColor     = "SLACK_COLOR"
+	EnvSlackUserName  = "SLACK_USERNAME"
+	EnvGithubActor    = "GITHUB_ACTOR"
+	EnvSiteName       = "SITE_NAME"
+	EnvHostName       = "HOST_NAME"
+	EnvDepolyPath     = "DEPLOY_PATH"
 )
 
 type Webhook struct {
@@ -73,8 +73,8 @@ func main() {
 			Short: true,
 		},
 		{
-			Title: "Action link",
-			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv(EnvCommitSha) + "/checks",
+			Title: "Actions URL",
+			Value: "https://github.com/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv("GITHUB_SHA") + "/checks",
 			Short: false,
 		},
 		{
@@ -102,9 +102,10 @@ func main() {
 	}
 
 	msg := Webhook{
-		UserName: os.Getenv(EnvSlackUserName),
-		IconURL:  os.Getenv(EnvSlackIcon),
-		Channel:  os.Getenv(EnvSlackChannel),
+		UserName:  os.Getenv(EnvSlackUserName),
+		IconURL:   os.Getenv(EnvSlackIcon),
+		IconEmoji: os.Getenv(EnvSlackIconEmoji),
+		Channel:   os.Getenv(EnvSlackChannel),
 		Attachments: []Attachment{
 			{
 				Fallback:   envOr(EnvSlackMessage, "GITHUB_ACTION="+os.Getenv("GITHUB_ACTION")+" \n GITHUB_ACTOR="+os.Getenv("GITHUB_ACTOR")+" \n GITHUB_EVENT_NAME="+os.Getenv("GITHUB_EVENT_NAME")+" \n GITHUB_REF="+os.Getenv("GITHUB_REF")+" \n GITHUB_REPOSITORY="+os.Getenv("GITHUB_REPOSITORY")+" \n GITHUB_WORKFLOW="+os.Getenv("GITHUB_WORKFLOW")),

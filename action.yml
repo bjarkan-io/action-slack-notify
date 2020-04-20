@@ -3,3 +3,6 @@ description: "Sends a Slack webhook"
 runs:
   using: "docker"
   image: "Dockerfile"
+branding:
+  icon: "bell"
+  color: "yellow"
